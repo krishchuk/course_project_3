@@ -15,7 +15,13 @@ def sort_by_state():
     Возвращает новый список только с выполненными (EXECUTED) операциями
     (1 сортировка)
     """
-    pass
+    sorted_by_state_list = []
+    unsorted_list = read_from_json()
+    for operation in unsorted_list:
+        for key, value in operation.items():
+            if value == "EXECUTED":
+                sorted_by_state_list.append(operation)
+    return sorted_by_state_list
 
 
 def sort_by_date():
