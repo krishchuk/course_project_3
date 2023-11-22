@@ -1,8 +1,13 @@
+import json
+
+
 def read_from_json():
     """
     Считывает данные из JSON и возвращает список
     """
-    pass
+    with open("operations.json", encoding="utf8") as file:
+        data = json.load(file)
+    return data
 
 
 def sort_by_state():
