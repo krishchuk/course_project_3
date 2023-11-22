@@ -1,4 +1,5 @@
 import json
+from operator import itemgetter
 
 
 def read_from_json():
@@ -29,7 +30,9 @@ def sort_by_date():
     Возвращает отсортированный по дате (по убыванию) новый список
     (2 сортировка)
     """
-    pass
+    unsorted_list = sort_by_state()
+    sorted_by_date_list = sorted(unsorted_list, key=itemgetter("date"), reverse=True)
+    return sorted_by_date_list
 
 
 def date_format():
