@@ -74,11 +74,10 @@ def print_operations():
     """
     operations = sort_by_date()
     for operation in operations[:5]:
-        # print(operation)
         print(date_format(operation["date"]), operation["description"])
         if operation.get("from"):
-            print(encoding_number(operation['from']), end="")
+            print(encoding_number(operation['from']), "->", end=" ")
 
-        print(f" -> {encoding_number(operation['to'])}")
+        print(encoding_number(operation['to']))
         print(f"{operation["operationAmount"]["amount"]} "
               f"{operation["operationAmount"]["currency"]["name"]}\n")
