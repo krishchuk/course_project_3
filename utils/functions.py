@@ -62,9 +62,9 @@ def encoding_number(number):
         num_in_list = textwrap.wrap(nums_only, 4)
         num_in_list[1] = num_in_list[1][:2] + '**'
         num_in_list[2] = '****'
-        encoding_num = ' '.join(num_in_list)
+        encoding_num = number[:-16] + ' '.join(num_in_list)
     else:
-        encoding_num = "**" + nums_only[-4:]
+        encoding_num = "Счет **" + nums_only[-4:]
     return encoding_num
 
 
