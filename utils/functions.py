@@ -1,4 +1,6 @@
 import json
+import re
+import textwrap
 from operator import itemgetter
 
 
@@ -45,21 +47,25 @@ def date_format(date):
     return date_form
 
 
-def encoding_card_number():
+def encoding_number(number):
     """
     Возвращает замаскированный номер карты
     (видны первые 6 цифр и последние 4,
     разбито по блокам по 4 цифры, разделенных пробелом)
+    или
+    возвращает замаскированный номер счета
+    (видны только последние 4 цифры)
     """
-    pass
-
-
-def encode_account_number():
-    """
-    Возвращает замаскированный номер счета
-    (видны только последние 4 цифры и 2 символа "*" перед ними)
-    """
-    pass
+    nums = re.findall(r'\d+', number)
+    nums_only = str([int(i) for i in nums][0])
+    if len(nums_only) == 16:
+        num_in_list = textwrap.wrap(nums_only, 4)
+        num_in_list[1] = num_in_list[1][:2] + '**'
+        num_in_list[2] = '****'
+        encoding_num = ' '.join(num_in_list)
+    else:
+        encoding_num = "**" + nums_only[-4:]
+    return encoding_num
 
 
 def print_operations():
