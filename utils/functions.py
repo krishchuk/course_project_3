@@ -35,11 +35,14 @@ def sort_by_date():
     return sorted_by_date_list
 
 
-def date_format():
+def date_format(date):
     """
     Возвращает дату операции в формате ДД.ММ.ГГГГ
     """
-    pass
+    date_only = date[:10]
+    date_in_list = date_only.split("-")
+    date_form = '.'.join(date_in_list[::-1])
+    return date_form
 
 
 def encoding_card_number():
