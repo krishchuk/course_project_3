@@ -1,4 +1,5 @@
 import json
+import pathlib
 import re
 import textwrap
 from operator import itemgetter
@@ -8,7 +9,8 @@ def read_from_json():
     """
     Считывает данные из JSON и возвращает список
     """
-    with open("operations.json", encoding="utf8") as file:
+    path = pathlib.Path(pathlib.Path.cwd(), '..', 'utils', 'operations.json')
+    with open(path, encoding="utf8") as file:
         data = json.load(file)
     return data
 
