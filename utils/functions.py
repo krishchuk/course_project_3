@@ -1,15 +1,14 @@
 import json
-import pathlib
 import re
 import textwrap
 from operator import itemgetter
+from config import OPERATIONS_PATH
 
 
-def read_from_json():
+def read_from_json(path: str) -> list[dict]:
     """
     Считывает данные из JSON и возвращает список
     """
-    path = pathlib.Path(pathlib.Path.cwd(), '..', 'utils', 'operations.json')
     with open(path, encoding="utf8") as file:
         data = json.load(file)
     return data
@@ -21,7 +20,7 @@ def sort_by_state():
     (1 сортировка)
     """
     sorted_by_state_list = []
-    unsorted_list = read_from_json()
+    unsorted_list = read_from_json(OPERATIONS_PATH)
     for operation in unsorted_list:
         for key, value in operation.items():
             if value == "EXECUTED":
